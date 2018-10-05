@@ -2,8 +2,6 @@ version: '3'
 services:
   db:
     image: mariadb:10.3.10-bionic
-    volumes:
-        - ./database:/var/lib/mysql
     container_name: ma0-tdi-mariadb
     networks:
       - backend
@@ -28,7 +26,7 @@ services:
     depends_on:
       - db
     volumes:
-        - ./php/:/var/www/html
+        - ./public_html/:/var/www/html
     ports:
       - 7000:80
 
