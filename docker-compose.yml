@@ -5,13 +5,15 @@ services:
     volumes:
         - ./database:/var/lib/mysql
     container_name: ma0-tdi-mariadb
+    networks:
+      - backend
     environment:
       MYSQL_ROOT_PASSWORD: toor
       MYSQL_DATABASE: tdi
       MYSQL_USER: tdi
       MYSQL_PASSWORD: tdi
     ports:
-      - "7001:3306"
+      - 7001:3306
 
   web:
     hostname: tdi-php-apache.local
@@ -20,9 +22,16 @@ services:
         dockerfile: .docker/php/Dockerfile
     image: tdi_php_apache
     container_name: ma0-tdi-php_apache
+    networks:
+      - backend
+      - frontend
     depends_on:
       - db
     volumes:
         - ./php/:/var/www/html
     ports:
-      - "7000:80"
+      - 7000:80
+
+networks:
+  backend:
+  frontend:
