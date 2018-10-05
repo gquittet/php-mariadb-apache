@@ -28,7 +28,6 @@ Just press on *Ctrl+C*
 ### Clean (only to delete project)
 
 ```
-rm -rf database
 docker-compose rm
 docker rmi tdi_php_apache
 ```
