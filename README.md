@@ -1,10 +1,18 @@
 # PHP - MariaDB - Apache SEED
 
-This seed is for creating a lightweight web server with apache, PHP and MySQL.
+This seed is for creating a lightweight web server with Apache, PHP and MySQL.
+
+## Informations
+
+| Name     | URL       | Port |
+| -------- | --------- | ---- |
+| Database | localhost | 7001 |
+| PHP      | localhost | 7000 |
+
 
 ## Commands
 
-### How to run?
+### Start
 
 
 Just run this command
@@ -17,20 +25,10 @@ docker-compose up
 
 Just press on *Ctrl+C*
 
-## Problems?
+### Clean (only to delete project)
 
-Just remove the database and the php folders and recreate it.
-
-The content of the index.php is:
-
-```php
-<?php
-
-$conn = new PDO('mysql:host=db;dbname=tdi;charset=utf8', 'tdi', 'tdi');
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$conn = null;
-
-phpinfo();
-
-?>
+```
+rm -rf database
+docker-compose rm
+docker rmi tdi_php_apache
 ```
