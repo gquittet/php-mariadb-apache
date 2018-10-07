@@ -2,7 +2,7 @@ version: '3'
 services:
   db:
     hostname: ma0-tdi-mariadb
-    image: mariadb:10.3.10-bionic
+    image: mariadb
     container_name: ma0-tdi-mariadb
     networks:
       - backend
@@ -27,7 +27,10 @@ services:
     depends_on:
       - db
     volumes:
-        - ./php/:/var/www/html
+      - ./.docker/php/vhost.conf:/etc/apache2/sites-available/000-default.conf
+      - ./.docker/php/timezone.ini:/usr/local/etc/php/conf.d/timezone.ini
+      - ./.docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./php/:/var/www/html
     ports:
       - 7000:80
 
