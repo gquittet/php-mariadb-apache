@@ -1,6 +1,7 @@
 version: '3'
 services:
   db:
+    hostname: ma0-tdi-mariadb
     image: mariadb:10.3.10-bionic
     container_name: ma0-tdi-mariadb
     networks:
@@ -14,19 +15,19 @@ services:
       - 7001:3306
 
   web:
-    hostname: tdi-php-apache.local
+    hostname: ma0-tdi-php-apache
     build:
-        context: .
-        dockerfile: .docker/php/Dockerfile
-    image: tdi_php_apache
-    container_name: ma0-tdi-php_apache
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    image: ma0-tdi-php-apache:1.0
+    container_name: ma0-tdi-php-apache
     networks:
       - backend
       - frontend
     depends_on:
       - db
     volumes:
-        - ./public_html/:/var/www/html
+        - ./php/:/var/www/html
     ports:
       - 7000:80
 
