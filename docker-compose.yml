@@ -6,6 +6,7 @@ services:
     container_name: ma0-tdi-mariadb
     networks:
       - backend
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_520_ci
     environment:
       MYSQL_ROOT_PASSWORD: toor
       MYSQL_DATABASE: tdi
