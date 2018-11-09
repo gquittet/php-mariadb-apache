@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   db:
     hostname: ma0-tdi-mariadb
@@ -33,6 +33,23 @@ services:
       - ./php/:/var/www/html
     ports:
       - 7000:80
+
+  phpmyadmin:
+    hostname: ma0-tdi-phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_USER: tdi
+      MYSQL_PASSWORD: tdi
+    networks:
+      - backend
+      - frontend
+    links:
+      - db:db
+    depends_on:
+      - db
+    ports:
+      - 7002:80
 
 networks:
   backend:
