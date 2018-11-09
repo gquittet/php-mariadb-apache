@@ -4,10 +4,11 @@ This seed is for creating a lightweight web server with Apache, PHP and MySQL.
 
 ## Informations
 
-| Name     | URL       | Port |
-| -------- | --------- | ---- |
-| Database | localhost | 7001 |
-| PHP      | localhost | 7000 |
+| Name       | URL       | Port |
+| ---------- | --------- | ---- |
+| Database   | localhost | 7001 |
+| PHP        | localhost | 7000 |
+| PHPMyAdmin | localhost | 7002 |
 
 
 ## Commands
